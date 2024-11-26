@@ -1,5 +1,5 @@
 package demo;
-
+/*  { SERVER code has no labels }*/
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -185,13 +185,13 @@ public class GamePrepServer  {
 			final int SOCKET_PORT = 5556;
 			ServerSocket server = new ServerSocket(SOCKET_PORT);
 			
-			System.out.println("Server is listening for the connection");
 			
 			Thread t1 = new Thread(new Runnable() {
 				public void run() {
 		    		synchronized(this) {
 		    			while (true) {
 		    				try {
+		    				System.out.println("Server is listening for the connection inside t1");
 		    		    	Socket s = server.accept();
 		    		    	System.out.println("Client Connected");
 		    		    	// pass each and everything in the server service as we are going to manipulate everything (24:00 in the video)
@@ -205,11 +205,15 @@ public class GamePrepServer  {
 		    				}
 		    		    	
 		    		}
+		    			
 		    	}
 		    	}
 				
 				
 			});
+			t1.start();
+			// this was the masterpiece I was missing 
+			
 			
 
 	}

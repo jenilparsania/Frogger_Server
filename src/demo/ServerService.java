@@ -14,7 +14,7 @@ public class ServerService implements Runnable {
 	// BankServer (we  need to use the originals)
 	private Socket s;
 	// variable passing in the gamePrepServer
-	final int CLIENT_PORT = 5656;
+	final int CLIENT_PORT = 5555;
 	private Car cars[];
 	private Car cars1[], cars2[];
 	private Log logs[], logs1[], logs2[];
@@ -115,6 +115,20 @@ public class ServerService implements Runnable {
 				x+= GameProperties.CHARACTER_STEP;
 				frog.setX(x);
 			}
+			
+			Socket s2 = new Socket("localhost", CLIENT_PORT);
+			
+			OutputStream outstream = s2.getOutputStream();
+			PrintWriter out = new PrintWriter(outstream);
+
+			
+			String commandOut = "FROGPOSITION "+frog.getX() + "  " + frog.getY() + "\n";
+			
+			System.out.println("Sending: " + commandOut);
+			out.println(commandOut);
+			out.flush();
+				
+			s2.close();
 			
 			
 			return ;

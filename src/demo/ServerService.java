@@ -157,14 +157,50 @@ public class ServerService implements Runnable {
 			
 		}else if(command.equals("STARTGAME")) {
 			// loop through and start cars and logs moving 
+			for(int z = 0; z < cars.length;z++) {
+				cars[z].startThread();
+				// start each car
+			}
+			/*
+			Socket s2 = new Socket("localhost", CLIENT_PORT);
 			
+			OutputStream outstream = s2.getOutputStream();
+			PrintWriter out = new PrintWriter(outstream);
+
+			
+			String commandOut = "CARDATA "+cars[0].getX() + "  " + cars[0].getY() + "\n";
+			
+			System.out.println("Sending: " + commandOut);
+			out.println(commandOut);
+			out.flush();
+				
+			s2.close();*/
 			
 			
 			return ;
 			
+			
+			
+			
+			
 		}else if(command.equals("GETCARS")) {
 			// open a socket to the client , send cars coordinates
 			// video : 40:00
+			Socket s2 = new Socket("localhost", CLIENT_PORT);
+			
+			OutputStream outstream = s2.getOutputStream();
+			PrintWriter out = new PrintWriter(outstream);
+
+			
+			String commandOut = "CARDATA "+cars[0].getX() + " " + cars[0].getY() + " "+cars[1].getX() + " " + cars[1].getY() + " " +cars[2].getX() + "  " + cars[2].getY() + "  "+ cars[3].getX() + "  "+cars[3].getY() + "\n";
+			
+			System.out.println("Sending: " + commandOut);
+			out.println(commandOut);
+			out.flush();
+				
+			s2.close();
+			
+			
 			
 			
 			return ;

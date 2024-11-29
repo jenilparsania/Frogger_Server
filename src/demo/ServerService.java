@@ -159,7 +159,11 @@ public class ServerService implements Runnable {
 			// loop through and start cars and logs moving 
 			for(int z = 0; z < cars.length;z++) {
 				cars[z].startThread();
-				// start each car
+				cars1[z].startThread();
+				cars2[z].startThread();
+				logs[z].startThread();
+				
+				
 			}
 			/*
 			Socket s2 = new Socket("localhost", CLIENT_PORT);
@@ -192,7 +196,9 @@ public class ServerService implements Runnable {
 			PrintWriter out = new PrintWriter(outstream);
 
 			
-			String commandOut = "CARDATA "+cars[0].getX() + " " + cars[0].getY() + " "+cars[1].getX() + " " + cars[1].getY() + " " +cars[2].getX() + "  " + cars[2].getY() + "  "+ cars[3].getX() + "  "+cars[3].getY() + "\n";
+			String commandOut = "CARDATA "+cars[0].getX() + " " + cars[0].getY() + " "+cars[1].getX() + " " + cars[1].getY() + " " +cars[2].getX() + "  " + cars[2].getY() + "  "+ cars[3].getX() + "  "+cars[3].getY() + " "+
+																   cars1[0].getX() +  " " + cars1[0].getY() + " "+cars1[1].getX() + " " + cars1[1].getY() + " " +cars1[2].getX() + "  " + cars1[2].getY() + "  "+ cars1[3].getX() + "  "+cars1[3].getY() + " "+
+																   cars2[0].getX() +  " " + cars2[0].getY() + " "+cars2[1].getX() + " " + cars2[1].getY() + " " +cars2[2].getX() + "  " + cars2[2].getY() + "  "+ cars2[3].getX() + "  "+cars2[3].getY() + " "+ "\n";
 			
 			System.out.println("Sending: " + commandOut);
 			out.println(commandOut);
@@ -205,6 +211,17 @@ public class ServerService implements Runnable {
 			
 			return ;
 		
+		}else if(command.equals("GETLOGS")) {
+			//open a socket and send the logs  co-ordinates
+			Socket s3 = new Socket("localhost",CLIENT_PORT);
+			
+			OutputStream outstream = s3.getOutputStream();
+			PrintWriter out = new PrintWriter(outstream);
+			
+//			String commandOut = "LOGDATA " + 
+			
+			
+			return;
 		}
 		
 		else {

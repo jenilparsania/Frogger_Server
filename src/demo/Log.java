@@ -162,7 +162,7 @@ public class Log  extends Sprite implements Runnable{
 				}
 				
 				this.setX(x);
-				System.out.println("log x: \"+this.r.x+\",  log y : \"+ this.r.y+ \" , log w : \"+this.r.width+ \" ,log h : \" +this.r.height");
+				//System.out.println("log x: \"+this.r.x+\",  log y : \"+ this.r.y+ \" , log w : \"+this.r.width+ \" ,log h : \" +this.r.height");
 				
 				
 				

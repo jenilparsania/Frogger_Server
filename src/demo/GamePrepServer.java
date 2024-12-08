@@ -17,8 +17,7 @@ public class GamePrepServer  {
 	
 	public static void main(String[] args) throws IOException {
 		 Frog frog;
-		 Car car;
-		 Log log;
+		 
 		
 		 Car[] cars;  
 		 Car[] cars1;

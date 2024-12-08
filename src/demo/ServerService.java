@@ -162,32 +162,27 @@ public class ServerService implements Runnable {
 				cars1[z].startThread();
 				cars2[z].startThread();
 				logs[z].startThread();
-				
+				logs1[z].startThread();
+				logs2[z].startThread();
 				
 			}
-			/*
-			Socket s2 = new Socket("localhost", CLIENT_PORT);
-			
-			OutputStream outstream = s2.getOutputStream();
-			PrintWriter out = new PrintWriter(outstream);
-
-			
-			String commandOut = "CARDATA "+cars[0].getX() + "  " + cars[0].getY() + "\n";
-			
-			System.out.println("Sending: " + commandOut);
-			out.println(commandOut);
-			out.flush();
-				
-			s2.close();*/
 			
 			
 			return ;
+				
+		}else if(command.equals("STOPGAME")) {
+			for(int z = 0; z < cars.length;z++) {
+				cars[z].stopThread();
+				cars1[z].stopThread();
+				cars2[z].stopThread();
+				logs[z].stopThread();
+				logs1[z].stopThread();
+				logs2[z].stopThread();
+				
+			}
 			
-			
-			
-			
-			
-		}else if(command.equals("GETCARS")) {
+		}
+		else if(command.equals("GETCARS")) {
 			// open a socket to the client , send cars coordinates
 			// video : 40:00
 			Socket s2 = new Socket("localhost", CLIENT_PORT);
@@ -218,7 +213,15 @@ public class ServerService implements Runnable {
 			OutputStream outstream = s3.getOutputStream();
 			PrintWriter out = new PrintWriter(outstream);
 			
-//			String commandOut = "LOGDATA " + 
+			String commandOut = "LOGDATA " + logs[0].getX() + " " + logs[0].getY() + " " + logs[1].getX() + " " + logs[1].getY() + " " +logs[2].getX() + " " + logs[2].getY() + " " + logs[3].getX() + " " + logs[3].getY() + " " + 
+																	logs1[0].getX() + " " + logs1[0].getY() + " " + logs1[1].getX() + " " + logs1[1].getY() + " " +logs1[2].getX() + " " + logs1[2].getY() + " " + logs1[3].getX() + " " + logs1[3].getY() + " "+ 
+																	logs2[0].getX() + " " + logs2[0].getY() + " " + logs2[1].getX() + " " + logs2[1].getY() + " " +logs2[2].getX() + " " + logs2[2].getY() + " " + logs2[3].getX() + " " + logs2[3].getY() + 
+					"  \n" ;
+			
+			System.out.println("Sending : " + commandOut);
+			out.println(commandOut);
+			out.flush();
+			s3.close();
 			
 			
 			return;
